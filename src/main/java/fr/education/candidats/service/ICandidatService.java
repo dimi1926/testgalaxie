@@ -5,5 +5,6 @@ import fr.education.candidats.entity.Candidat;
 
 public interface ICandidatService {
 	List<Candidat> findAllCandidats() throws Exception;
+	Candidat findCandidatByNumcan(String id) throws Exception;
 
 }

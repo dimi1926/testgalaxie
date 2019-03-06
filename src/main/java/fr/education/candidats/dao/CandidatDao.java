@@ -20,10 +20,14 @@ public class CandidatDao implements IRechercheCandidatsDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Candidat> findAllCandidats() {
 		return entityManager.createQuery(ALL_CANDIDATS, Candidat.class).getResultList();
+	}
+
+	@Override
+	public Candidat findCandidatByNumcan(Long id) {
+		return entityManager.find(Candidat.class, id);
 	}
 
 }

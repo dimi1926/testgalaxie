@@ -21,4 +21,9 @@ public class CandidatService implements ICandidatService {
 		return dao.findAllCandidats();
 	}
 
+	@Override
+	public Candidat findCandidatByNumcan(String id) throws Exception {
+		return dao.findCandidatByNumcan(Long.parseLong(id));
+	}
+
 }

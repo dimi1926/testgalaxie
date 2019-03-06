@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,6 +27,11 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Table(name = "candidat")
+@NamedQueries(value= {
+		@NamedQuery(name="Candidat.findByNumcan", 
+				query="SELECT c FROM Candidat c WHERE c.numcan = :numcan")
+		
+})
 public class Candidat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
