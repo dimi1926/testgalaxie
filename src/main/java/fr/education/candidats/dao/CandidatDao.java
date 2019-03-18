@@ -29,5 +29,23 @@ public class CandidatDao implements IRechercheCandidatsDao {
 	public Candidat findCandidatByNumcan(Long id) {
 		return entityManager.find(Candidat.class, id);
 	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Override
+	public Candidat saveCan(Integer id, Candidat candidat) {
+		Candidat objetBase = findCandidatByNumcan(candidat.getId());
+		if (id.equals(objetBase.getId())) {
+			entityManager.merge(candidat);
+		} else {
+			entityManager.persist(candidat);
+		}
+		return candidat;
+	}
+
+	@Override
+	public void delete(Candidat can) {
+		System.out.println("dans dao id est: "+can.getId());
+		entityManager.remove(can);
+	}
 
 }

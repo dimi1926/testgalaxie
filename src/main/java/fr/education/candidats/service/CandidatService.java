@@ -26,4 +26,14 @@ public class CandidatService implements ICandidatService {
 		return dao.findCandidatByNumcan(Long.parseLong(id));
 	}
 
+	@Override
+	public Candidat sauvegarderCandidat(Integer id, Candidat can) {
+		return dao.saveCan(id, can);
+	}
+
+	@Override
+	public void delete(Candidat can) {
+		System.out.println("dans service"+can.getId());
+		dao.delete(can);
+	}
 }

@@ -1,5 +1,6 @@
 package fr.education.candidats.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,13 +28,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@XmlRootElement
 @Table(name = "candidat")
 @NamedQueries(value= {
 		@NamedQuery(name="Candidat.findByNumcan", 
 				query="SELECT c FROM Candidat c WHERE c.numcan = :numcan")
 		
 })
-public class Candidat {
+public class Candidat implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
